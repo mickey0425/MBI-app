@@ -11,35 +11,33 @@ import UIKit
 class ViewController: UIViewController {
 
 
-    @IBOutlet weak var humWeight: UITextField!
-
+    
     @IBOutlet weak var humHeigh: UITextField!
-
+    @IBOutlet weak var humWeight: UITextField!
     @IBOutlet weak var humBMI: UITextField!
+    
+   
+   @IBAction func calBMI(_ sender: Any) {
+    
+      let heighValue = Double(humHeigh.text!)
+      let weightValue = Double(humWeight.text!)
+      let bmiValue = bmiModel(h:heighValue! , w:weightValue!)
+      humBMI.text=String(format:"%.3f",bmiValue.calculateBMI())
+    }
 
-
-
+    @IBAction func resetData(_ sender: Any) {
+        humHeigh.text = ""
+        humWeight.text = ""
+        humBMI.text = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    @IBAction func resetData( ) {
-       humHeigh.text = "請輸入身高"
-       humWeight.text = "請輸入體重"
-       humBMI.text = "結果"
-    }
-
-    @IBAction func claBMI( ) {
-
-//
-//        var heigh = Float(humHeigh.text!)
-//        var weight = Float(humWeight.text!)
-//        var BMI = Float(weight!/(heigh! * heigh!))
-//
-//        humBMI.text! = "\(BMI)"
-
-    }
+    
+    
 }
 
 
